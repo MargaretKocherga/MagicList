@@ -27,6 +27,6 @@ struct RowView: View {
 
 struct RowView_Previews: PreviewProvider {
     static var previews: some View {
-        RowView(checklistItem: .constant(ChecklistItem(name: "Sample item")))
+        RowView(checklistItem: .constant(ChecklistItem(name: "Sample item", date: Date())))
     }
 }

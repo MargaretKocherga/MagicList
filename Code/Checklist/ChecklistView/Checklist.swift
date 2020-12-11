@@ -9,11 +9,12 @@ import Foundation
 
 class Checklist: ObservableObject {
     @Published var items: [ChecklistItem] = []
-    
+    public var selectedDate: Date!
     
     //  Methods
     //  =======
-    init() {
+    init(selectedDate: Date) {
+        self.selectedDate = selectedDate
         print("Documents directory is: \(documentsDirectory())")
         print("Data file path is: \(dataFilePath())")
         loadListItems()
@@ -21,7 +22,9 @@ class Checklist: ObservableObject {
     
     func printChecklistContents() {
         for item in items {
-            print(item)
+            if(Calendar.current.compare(item.date, to: selectedDate, toGranularity: .day) == .orderedSame) {
+                print(item)
+            }
         }
     }
     
@@ -71,7 +74,13 @@ class Checklist: ObservableObject {
             let decoder = PropertyListDecoder()
             do {
                 //  4
+//                var bufItems: [ChecklistItem] = []
                 items = try decoder.decode([ChecklistItem].self, from: data)
+//                for item in bufItems {
+//                    if(Calendar.current.compare(item.date, to: selectedDate, toGranularity: .day) == .orderedSame) {
+//                        items.append(item)
+//                    }
+//                }
                 //  5
             } catch {
                 print("Error decoding item array: \(error.localizedDescription)")

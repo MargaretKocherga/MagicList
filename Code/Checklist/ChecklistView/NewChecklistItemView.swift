@@ -12,6 +12,7 @@ struct NewChecklistItemView: View {
     //  Properties
     //  ==========
     @State var newItemName = ""
+    @State var newItemDate = Date()
     @Environment(\.presentationMode) var presentationMode
     var checklist: Checklist
     
@@ -20,8 +21,9 @@ struct NewChecklistItemView: View {
             Text("Add new item")
             Form {
                 TextField("Enter item name", text: $newItemName)
+                DatePicker("Date", selection: $newItemDate, displayedComponents: .date)
                 Button(action: {
-                    let newChecklistItem = ChecklistItem(name: newItemName)
+                    let newChecklistItem = ChecklistItem(name: newItemName, date: newItemDate)
                     self.checklist.items.append(newChecklistItem)
                     self.checklist.printChecklistContents()
                     self.checklist.saveListItems()
@@ -42,6 +44,6 @@ struct NewChecklistItemView: View {
 
 struct NewChecklistItemView_Previews: PreviewProvider {
     static var previews: some View {
-        NewChecklistItemView(checklist: Checklist())
+        NewChecklistItemView(checklist: Checklist(selectedDate: Date()))
     }
 }

@@ -16,6 +16,7 @@ struct EditChecklistItemView: View {
     var body: some View {
         Form {
             TextField("Name", text: $checklistItem.name)
+            DatePicker("Date", selection: $checklistItem.date, displayedComponents: .date)
             Toggle("Completed", isOn: $checklistItem.isChecked)
         }
         .accentColor(.red)
@@ -24,6 +25,6 @@ struct EditChecklistItemView: View {
 
 struct EditChecklistItemView_Previews: PreviewProvider {
     static var previews: some View {
-        EditChecklistItemView(checklistItem: .constant(ChecklistItem(name: "Sample item")))
+        EditChecklistItemView(checklistItem: .constant(ChecklistItem(name: "Sample item", date: Date())))
     }
 }
