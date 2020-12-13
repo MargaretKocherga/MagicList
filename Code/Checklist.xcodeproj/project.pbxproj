@@ -14,6 +14,11 @@
 		AB26851E25810FCE00EDE219 /* CalendarWeekdayHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB26851D25810FCE00EDE219 /* CalendarWeekdayHeader.swift */; };
 		AB2685222581109000EDE219 /* CalendarMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2685212581109000EDE219 /* CalendarMonth.swift */; };
 		AB2685252581168F00EDE219 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2685242581168F00EDE219 /* CalendarViewController.swift */; };
+		AB26852A2584036A00EDE219 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2685292584036A00EDE219 /* User.swift */; };
+		AB26852D258409C200EDE219 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB26852C258409C200EDE219 /* ProfileView.swift */; };
+		AB2685322584ED8600EDE219 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2685312584ED8600EDE219 /* EditProfileView.swift */; };
+		AB2685352584F8F200EDE219 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2685342584F8F200EDE219 /* ImagePicker.swift */; };
+		AB2685382585010C00EDE219 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2685372585010C00EDE219 /* UserData.swift */; };
 		AB4F8122252B9C7500494266 /* EditChecklistItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4F8121252B9C7500494266 /* EditChecklistItemView.swift */; };
 		AB4F8126252BB42100494266 /* NewChecklistItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4F8125252BB42100494266 /* NewChecklistItemView.swift */; };
 		AB4F812A252C7FCB00494266 /* RowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4F8129252C7FCB00494266 /* RowView.swift */; };
@@ -36,6 +41,11 @@
 		AB26851D25810FCE00EDE219 /* CalendarWeekdayHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWeekdayHeader.swift; sourceTree = "<group>"; };
 		AB2685212581109000EDE219 /* CalendarMonth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarMonth.swift; sourceTree = "<group>"; };
 		AB2685242581168F00EDE219 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		AB2685292584036A00EDE219 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		AB26852C258409C200EDE219 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		AB2685312584ED8600EDE219 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
+		AB2685342584F8F200EDE219 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		AB2685372585010C00EDE219 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		AB4F8121252B9C7500494266 /* EditChecklistItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditChecklistItemView.swift; sourceTree = "<group>"; };
 		AB4F8125252BB42100494266 /* NewChecklistItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChecklistItemView.swift; sourceTree = "<group>"; };
 		AB4F8129252C7FCB00494266 /* RowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowView.swift; sourceTree = "<group>"; };
@@ -93,6 +103,11 @@
 		AB268528258401EF00EDE219 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				AB2685292584036A00EDE219 /* User.swift */,
+				AB2685372585010C00EDE219 /* UserData.swift */,
+				AB26852C258409C200EDE219 /* ProfileView.swift */,
+				AB2685312584ED8600EDE219 /* EditProfileView.swift */,
+				AB2685342584F8F200EDE219 /* ImagePicker.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -218,6 +233,7 @@
 				AB699D2825276460007002A6 /* Checklist.swift in Sources */,
 				AB26851A25810DF000EDE219 /* CalendarCell.swift in Sources */,
 				AB2685252581168F00EDE219 /* CalendarViewController.swift in Sources */,
+				AB2685352584F8F200EDE219 /* ImagePicker.swift in Sources */,
 				AB4F8126252BB42100494266 /* NewChecklistItemView.swift in Sources */,
 				AB4F812A252C7FCB00494266 /* RowView.swift in Sources */,
 				ABDD09A8251E3F5B008DB574 /* ChecklistView.swift in Sources */,
@@ -225,11 +241,15 @@
 				AB2684A7257E25CE00EDE219 /* CalendarColorSettings.swift in Sources */,
 				AB699D24252763F2007002A6 /* ChecklistItem.swift in Sources */,
 				AB2684AA257E272E00EDE219 /* CalendarDate.swift in Sources */,
+				AB2685322584ED8600EDE219 /* EditProfileView.swift in Sources */,
 				ABDD09A6251E3F5B008DB574 /* ChecklistApp.swift in Sources */,
 				AB26851E25810FCE00EDE219 /* CalendarWeekdayHeader.swift in Sources */,
 				AB4F8122252B9C7500494266 /* EditChecklistItemView.swift in Sources */,
 				AB4F8133252E4BC400494266 /* ForEach.swift in Sources */,
+				AB2685382585010C00EDE219 /* UserData.swift in Sources */,
+				AB26852A2584036A00EDE219 /* User.swift in Sources */,
 				AB4F8131252E4BC400494266 /* IndexedCollection.swift in Sources */,
+				AB26852D258409C200EDE219 /* ProfileView.swift in Sources */,
 				AB2685222581109000EDE219 /* CalendarMonth.swift in Sources */,
 				AB2684AE257E285B00EDE219 /* CalendarManager.swift in Sources */,
 			);

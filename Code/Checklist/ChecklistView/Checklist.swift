@@ -74,13 +74,7 @@ class Checklist: ObservableObject {
             let decoder = PropertyListDecoder()
             do {
                 //  4
-//                var bufItems: [ChecklistItem] = []
                 items = try decoder.decode([ChecklistItem].self, from: data)
-//                for item in bufItems {
-//                    if(Calendar.current.compare(item.date, to: selectedDate, toGranularity: .day) == .orderedSame) {
-//                        items.append(item)
-//                    }
-//                }
                 //  5
             } catch {
                 print("Error decoding item array: \(error.localizedDescription)")

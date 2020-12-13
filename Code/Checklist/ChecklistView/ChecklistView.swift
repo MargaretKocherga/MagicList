@@ -14,68 +14,89 @@ struct ChecklistView: View {
     
     @State var newChecklistItemViewIsVisible = false
     @State var calendarIsVisible = false
+    @State var selection: Int? = nil
     @ObservedObject var calendarManager = CalendarManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365))
     @ObservedObject var checklist = Checklist(selectedDate: Date())
+    
     
     //  User interface content and layout
     //  =================================
     var body: some View {
         
         VStack {
-            Spacer(minLength: 10)
-            HStack(spacing: 90){
-                Button(action: {
-                    //  new view appears
-                }) {
-                    Image(systemName: "person.crop.circle")
-                        .resizable()
-                        .frame(width: 34,height:34)
-                }
-                Text(getCurrentDate())
-                Button(action: {
-                    self.calendarIsVisible = true
-                }) {
-                    Image(systemName: "calendar.circle.fill")
-                        .resizable()
-                        .frame(width: 34,height:34)
-                }.sheet(isPresented: $calendarIsVisible, content: {
-                            CalendarViewController(isPresented: self.$calendarIsVisible, calendarManager: self.calendarManager, checklist: self.checklist)})
-            }.foregroundColor(.red)
-            
-            
-            NavigationView {
-                List {
-                    ForEach(checklist.items) { index in
-                        if(Calendar.current.compare(self.checklist.items[index].date,
-                                                    to: calendarManager.selectedDate,
-                                                    toGranularity: .day) == .orderedSame) {
-                            RowView(checklistItem: self.$checklist.items[index])
+
+            GeometryReader { geometry in
+                NavigationView {
+                    List {
+                        ForEach(checklist.items) { index in
+                            if(Calendar.current.compare(self.checklist.items[index].date, to: calendarManager.selectedDate,
+                                                        toGranularity: .day) == .orderedSame) {
+                                RowView(checklistItem: self.$checklist.items[index])
+                            }
                         }
+                        .onDelete(perform: checklist.deleteListItem)
+                        .onMove(perform: checklist.moveListItem)
                     }
-                    .onDelete(perform: checklist.deleteListItem)
-                    .onMove(perform: checklist.moveListItem)
-                }
-                .navigationBarItems(leading: Button(action: {
-                    self.newChecklistItemViewIsVisible = true
-                }) {
-                    HStack {
-                        Image(systemName: "plus.circle.fill")
-                        Text("Add item")
+                    .navigationBarItems(leading:
+                        HStack {
+                            VStack {
+                                Spacer(minLength: 10)
+                                NavigationLink(destination: ProfileView(), tag: 2, selection: self.$selection) {
+                                    Button(action: {
+                                        self.selection = 2
+                                    }) {
+                                        Image(systemName: "person.crop.circle")
+                                            .resizable()
+                                            .frame(width: 25,  height: 25)
+                                            
+                                    }
+                                }.padding(-5)
+                                .padding(.leading, -(geometry.size.width / 8.5))
+                                
+                                
+                                Button(action: {
+                                    self.newChecklistItemViewIsVisible = true
+                                }) {
+                                    HStack {
+                                    Image(systemName: "plus.circle.fill")
+                                    Text("Add item")
+                                    }
+                                }
+                            }
+                            Text(getCurrentDate()).padding(.leading, (geometry.size.width / 32.0))
+                        }.foregroundColor(.red),
+                    trailing:
+                        VStack {
+                            Spacer(minLength: 10)
+                            Button(action: {
+                                self.calendarIsVisible = true
+                            }) {
+                                Image(systemName: "calendar.circle.fill")
+                                    .resizable()
+                                    .frame(width: 25, height:25)
+                            }.padding(-5)
+                            .sheet(isPresented: $calendarIsVisible, content: {
+                                        CalendarViewController(isPresented: self.$calendarIsVisible, calendarManager: self.calendarManager, checklist: self.checklist)})
+                    
+                            EditButton()
+                            
+                        }.foregroundColor(.red))
+                    
+                    .navigationBarTitle("\nChecklist")
+                    .onAppear() {
+                        self.checklist.printChecklistContents()
+                        self.checklist.saveListItems()
                     }
-                    .foregroundColor(.red)
-                },
-                trailing: EditButton().foregroundColor(.red))
-                
-                .navigationBarTitle("Checklist")
-                .onAppear() {
-                    self.checklist.printChecklistContents()
-                    self.checklist.saveListItems()
                 }
-            }
-            .sheet(isPresented: $newChecklistItemViewIsVisible) {
-                NewChecklistItemView(checklist: self.checklist)
+                .sheet(isPresented: $newChecklistItemViewIsVisible) {
+                    NewChecklistItemView(checklist: self.checklist)
+                }
+            
             }
         }
+        .edgesIgnoringSafeArea(.all)
+        .statusBar(hidden: true)
+        
     }
     
     

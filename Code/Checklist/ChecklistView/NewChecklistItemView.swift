@@ -22,6 +22,7 @@ struct NewChecklistItemView: View {
             Form {
                 TextField("Enter item name", text: $newItemName)
                 DatePicker("Date", selection: $newItemDate, displayedComponents: .date)
+                    .accentColor(.red)
                 Button(action: {
                     let newChecklistItem = ChecklistItem(name: newItemName, date: newItemDate)
                     self.checklist.items.append(newChecklistItem)

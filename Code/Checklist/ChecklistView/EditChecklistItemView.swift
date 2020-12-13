@@ -23,6 +23,8 @@ struct EditChecklistItemView: View {
     }
 }
 
+//  Previews
+//  ========
 struct EditChecklistItemView_Previews: PreviewProvider {
     static var previews: some View {
         EditChecklistItemView(checklistItem: .constant(ChecklistItem(name: "Sample item", date: Date())))
